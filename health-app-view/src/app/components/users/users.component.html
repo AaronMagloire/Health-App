@@ -1,0 +1,26 @@
+<h2>My Users</h2>
+
+<div>
+  <label>User name:
+    <input #userName />
+  </label>
+  <label>Height:
+    <input #height />
+  </label>
+  <label>Weight:
+    <input #weight />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(userName.value, height.value, weight.value); userName.value=''; height.value=''; weight.value=''">
+    add
+  </button>
+</div>
+
+<ul class="heroes">
+  <li *ngFor="let user of users">
+    <a routerLink="/detail/{{user.id}}">
+      <span class="badge">{{user.id}}</span> {{user.name}}, {{user.height}} inches, {{user.weight}} lbs
+    </a>
+    <button class="delete" title="delete user" (click)="delete(user)">x</button>
+  </li>
+</ul>
